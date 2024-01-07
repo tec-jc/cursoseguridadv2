@@ -1,7 +1,7 @@
 package com.curso.api.config.security.filter;
 
 import com.curso.api.exceptions.ObjectNotFoundException;
-import com.curso.api.persistence.entities.User;
+import com.curso.api.persistence.entities.security.User;
 import com.curso.api.services.auth.JwtService;
 import com.curso.api.services.implementation.UserService;
 import jakarta.servlet.FilterChain;

@@ -2,9 +2,9 @@ package com.curso.api.services.implementation;
 
 import com.curso.api.dtos.user.SaveUser;
 import com.curso.api.exceptions.InvalidPasswordException;
-import com.curso.api.persistence.entities.User;
+import com.curso.api.persistence.entities.security.User;
 import com.curso.api.persistence.repositories.IUserRepository;
-import com.curso.api.persistence.utils.Role;
+import com.curso.api.persistence.utils.RoleEnum;
 import com.curso.api.services.interfaces.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -29,7 +29,7 @@ public class UserService implements IUserService {
         user.setPassword(passwordEncoder.encode(newUser.getPassword()));
         user.setUsername(newUser.getUsername());
         user.setName(newUser.getName());
-        user.setRole(Role.CUSTOMER);
+        user.setRole(RoleEnum.CUSTOMER);
 
         return userRepository.save(user);
     }

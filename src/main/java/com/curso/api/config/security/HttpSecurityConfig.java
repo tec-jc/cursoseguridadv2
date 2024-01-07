@@ -1,8 +1,8 @@
 package com.curso.api.config.security;
 
 import com.curso.api.config.security.filter.JwtAuthenticationFilter;
-import com.curso.api.persistence.utils.Role;
-import com.curso.api.persistence.utils.RolePermission;
+import com.curso.api.persistence.utils.RoleEnum;
+import com.curso.api.persistence.utils.RolePermissionEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -54,18 +54,18 @@ public class HttpSecurityConfig {
 
     private static void buildRequestMatcherPermissions(AuthorizeHttpRequestsConfigurer<HttpSecurity>.AuthorizationManagerRequestMatcherRegistry authReqConfig) {
         /*Autorización de endpoint de productos*/
-        authReqConfig.requestMatchers(HttpMethod.GET, "/products").hasAnyAuthority(RolePermission.READ_ALL_PRODUCTS.name());
-        authReqConfig.requestMatchers(HttpMethod.GET, "/products/{productId}").hasAnyAuthority(RolePermission.READ_ONE_PRODUCT.name());
-        authReqConfig.requestMatchers(HttpMethod.POST, "/products").hasAnyAuthority(RolePermission.CREATE_ONE_PRODUCT.name());
-        authReqConfig.requestMatchers(HttpMethod.PUT, "/products/{productId}").hasAnyAuthority(RolePermission.UPDATE_ONE_PRODUCT.name());
-        authReqConfig.requestMatchers(HttpMethod.PUT, "/products/{productId}/disabled").hasAnyAuthority(RolePermission.DISABLE_ONE_PRODUCT.name());
+        authReqConfig.requestMatchers(HttpMethod.GET, "/products").hasAnyAuthority(RolePermissionEnum.READ_ALL_PRODUCTS.name());
+        authReqConfig.requestMatchers(HttpMethod.GET, "/products/{productId}").hasAnyAuthority(RolePermissionEnum.READ_ONE_PRODUCT.name());
+        authReqConfig.requestMatchers(HttpMethod.POST, "/products").hasAnyAuthority(RolePermissionEnum.CREATE_ONE_PRODUCT.name());
+        authReqConfig.requestMatchers(HttpMethod.PUT, "/products/{productId}").hasAnyAuthority(RolePermissionEnum.UPDATE_ONE_PRODUCT.name());
+        authReqConfig.requestMatchers(HttpMethod.PUT, "/products/{productId}/disabled").hasAnyAuthority(RolePermissionEnum.DISABLE_ONE_PRODUCT.name());
 
         /*Autorización de endpoint de categorías*/
-        authReqConfig.requestMatchers(HttpMethod.GET, "/categories").hasAnyAuthority(RolePermission.READ_ALL_CATEGORIES.name());
-        authReqConfig.requestMatchers(HttpMethod.GET, "/categories/{categoryId}").hasAnyAuthority(RolePermission.READ_ONE_CATEGORY.name());
-        authReqConfig.requestMatchers(HttpMethod.POST, "/categories").hasAnyAuthority(RolePermission.CREATE_ONE_CATEGORY.name());
-        authReqConfig.requestMatchers(HttpMethod.PUT, "/categories/{categoryId}").hasAnyAuthority(RolePermission.UPDATE_ONE_CATEGORY.name());
-        authReqConfig.requestMatchers(HttpMethod.PUT, "/categories/{categoryId}/disabled").hasAnyAuthority(RolePermission.DISABLE_ONE_CATEGORY.name());
+        authReqConfig.requestMatchers(HttpMethod.GET, "/categories").hasAnyAuthority(RolePermissionEnum.READ_ALL_CATEGORIES.name());
+        authReqConfig.requestMatchers(HttpMethod.GET, "/categories/{categoryId}").hasAnyAuthority(RolePermissionEnum.READ_ONE_CATEGORY.name());
+        authReqConfig.requestMatchers(HttpMethod.POST, "/categories").hasAnyAuthority(RolePermissionEnum.CREATE_ONE_CATEGORY.name());
+        authReqConfig.requestMatchers(HttpMethod.PUT, "/categories/{categoryId}").hasAnyAuthority(RolePermissionEnum.UPDATE_ONE_CATEGORY.name());
+        authReqConfig.requestMatchers(HttpMethod.PUT, "/categories/{categoryId}/disabled").hasAnyAuthority(RolePermissionEnum.DISABLE_ONE_CATEGORY.name());
 
         /*Autorización de endpoints públicos*/
         authReqConfig.requestMatchers(HttpMethod.POST, "/customers").permitAll();
@@ -77,20 +77,20 @@ public class HttpSecurityConfig {
 
     private static void buildRequestMatcherRoles(AuthorizeHttpRequestsConfigurer<HttpSecurity>.AuthorizationManagerRequestMatcherRegistry authReqConfig) {
         /*Autorización de endpoint de productos*/
-        authReqConfig.requestMatchers(HttpMethod.GET, "/products").hasAnyRole(Role.ADMINISTRATOR.name(), Role.ASSISTANT_ADMINISTRATOR.name());
-        authReqConfig.requestMatchers(HttpMethod.GET, "/products/{productId}").hasAnyRole(Role.ADMINISTRATOR.name(), Role.ASSISTANT_ADMINISTRATOR.name());
-        authReqConfig.requestMatchers(HttpMethod.POST, "/products").hasRole(Role.ADMINISTRATOR.name());
-        authReqConfig.requestMatchers(HttpMethod.PUT, "/products/{productId}").hasAnyRole(Role.ADMINISTRATOR.name(), Role.ASSISTANT_ADMINISTRATOR.name());
-        authReqConfig.requestMatchers(HttpMethod.PUT, "/products/{productId}/disabled").hasRole(Role.ADMINISTRATOR.name());
+        authReqConfig.requestMatchers(HttpMethod.GET, "/products").hasAnyRole(RoleEnum.ADMINISTRATOR.name(), RoleEnum.ASSISTANT_ADMINISTRATOR.name());
+        authReqConfig.requestMatchers(HttpMethod.GET, "/products/{productId}").hasAnyRole(RoleEnum.ADMINISTRATOR.name(), RoleEnum.ASSISTANT_ADMINISTRATOR.name());
+        authReqConfig.requestMatchers(HttpMethod.POST, "/products").hasRole(RoleEnum.ADMINISTRATOR.name());
+        authReqConfig.requestMatchers(HttpMethod.PUT, "/products/{productId}").hasAnyRole(RoleEnum.ADMINISTRATOR.name(), RoleEnum.ASSISTANT_ADMINISTRATOR.name());
+        authReqConfig.requestMatchers(HttpMethod.PUT, "/products/{productId}/disabled").hasRole(RoleEnum.ADMINISTRATOR.name());
 
         /*Autorización de endpoint de categorías*/
-        authReqConfig.requestMatchers(HttpMethod.GET, "/categories").hasAnyRole(Role.ADMINISTRATOR.name(), Role.ASSISTANT_ADMINISTRATOR.name());
-        authReqConfig.requestMatchers(HttpMethod.GET, "/categories/{categoryId}").hasAnyRole(Role.ADMINISTRATOR.name(), Role.ASSISTANT_ADMINISTRATOR.name());
-        authReqConfig.requestMatchers(HttpMethod.POST, "/categories").hasRole(Role.ADMINISTRATOR.name());
-        authReqConfig.requestMatchers(HttpMethod.PUT, "/categories/{categoryId}").hasAnyRole(Role.ADMINISTRATOR.name(), Role.ASSISTANT_ADMINISTRATOR.name());
-        authReqConfig.requestMatchers(HttpMethod.PUT, "/categories/{categoryId}/disabled").hasRole(Role.ADMINISTRATOR.name());
+        authReqConfig.requestMatchers(HttpMethod.GET, "/categories").hasAnyRole(RoleEnum.ADMINISTRATOR.name(), RoleEnum.ASSISTANT_ADMINISTRATOR.name());
+        authReqConfig.requestMatchers(HttpMethod.GET, "/categories/{categoryId}").hasAnyRole(RoleEnum.ADMINISTRATOR.name(), RoleEnum.ASSISTANT_ADMINISTRATOR.name());
+        authReqConfig.requestMatchers(HttpMethod.POST, "/categories").hasRole(RoleEnum.ADMINISTRATOR.name());
+        authReqConfig.requestMatchers(HttpMethod.PUT, "/categories/{categoryId}").hasAnyRole(RoleEnum.ADMINISTRATOR.name(), RoleEnum.ASSISTANT_ADMINISTRATOR.name());
+        authReqConfig.requestMatchers(HttpMethod.PUT, "/categories/{categoryId}/disabled").hasRole(RoleEnum.ADMINISTRATOR.name());
 
-        authReqConfig.requestMatchers(HttpMethod.GET, "/auth/profile").hasAnyRole(Role.ADMINISTRATOR.name(), Role.ASSISTANT_ADMINISTRATOR.name(), Role.CUSTOMER.name());
+        authReqConfig.requestMatchers(HttpMethod.GET, "/auth/profile").hasAnyRole(RoleEnum.ADMINISTRATOR.name(), RoleEnum.ASSISTANT_ADMINISTRATOR.name(), RoleEnum.CUSTOMER.name());
 
         /*Autorización de endpoints públicos*/
         authReqConfig.requestMatchers(HttpMethod.POST, "/customers").permitAll();

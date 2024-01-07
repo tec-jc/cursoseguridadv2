@@ -1,6 +1,6 @@
 package com.curso.api.persistence.repositories;
 
-import com.curso.api.persistence.entities.User;
+import com.curso.api.persistence.entities.security.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

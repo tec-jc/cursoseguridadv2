@@ -5,7 +5,7 @@ import com.curso.api.dtos.auth.AuthenticationResponse;
 import com.curso.api.dtos.user.RegisteredUser;
 import com.curso.api.dtos.user.SaveUser;
 import com.curso.api.exceptions.ObjectNotFoundException;
-import com.curso.api.persistence.entities.User;
+import com.curso.api.persistence.entities.security.User;
 import com.curso.api.services.interfaces.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

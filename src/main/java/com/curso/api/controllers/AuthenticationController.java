@@ -2,7 +2,7 @@ package com.curso.api.controllers;
 
 import com.curso.api.dtos.auth.AuthenticationRequest;
 import com.curso.api.dtos.auth.AuthenticationResponse;
-import com.curso.api.persistence.entities.User;
+import com.curso.api.persistence.entities.security.User;
 import com.curso.api.services.auth.AuthenticationService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
