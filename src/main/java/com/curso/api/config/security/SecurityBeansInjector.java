@@ -1,7 +1,7 @@
 package com.curso.api.config.security;
 
 import com.curso.api.exceptions.ObjectNotFoundException;
-import com.curso.api.persistence.repositories.IUserRepository;
+import com.curso.api.persistence.repositories.security.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
